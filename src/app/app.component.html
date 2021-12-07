@@ -1,0 +1,48 @@
+<h1 class="text-success text-center" appMarcaTexto>Live angular diretiva</h1>
+
+<!--Diretivas de atributo-->
+<div [ngStyle]="{background: count < 5 ? 'red' : 'violet'}" [ngClass]="{custom: count > 5 }">
+  <h2 class="text-center">Contador: {{count}}</h2>
+</div>
+<!--Diretivas de Estruturais-->
+<h2 *ngIf="count > 7; else menor " style="background: #2feaff;" class="text-center">O contador passou de 7!</h2>
+<ng-template #menor>
+  <h2 style="background: greenyellow;" class="text-center">O contador é menor que 7!</h2>
+</ng-template>
+<ul [ngSwitch]="count" class="list-group mx-auto col-3">
+
+  <li class="list-group-item" *ngSwitchCase="8"> Meu texto é igual 8
+  </li>
+  <li class="list-group-item" *ngSwitchCase="2"> Meu texto é igual 2
+  </li>
+  <li class="list-group-item" *ngSwitchCase="7"> Meu texto é igual 7
+  </li>
+  <li class="list-group-item" *ngSwitchCase="5"> Meu texto é igual 5
+  </li>
+  <li class="list-group-item" *ngSwitchCase="1"> Meu texto é igual 1
+  </li>
+  <li class="list-group-item" *ngSwitchDefault> esse é o default
+  </li>
+</ul>
+
+<ul class="list-group mx-auto col-3">
+  <li 
+      *ngFor="let pessoa of pessoas"
+       class="list-group-item mt-3">{{pessoa.nome}} {{pessoa.sobrenome}}
+  </li>
+</ul>
+
+<ul class="list-group mx-auto col-3">
+  <ng-template ngFor let-pessoa [ngForOf]="pessoas">
+    <li class="list-group-item mt-3">O nome da pessoa: {{pessoa.nome}} {{pessoa.sobrenome}}</li>
+  </ng-template>
+</ul>
+
+<h1 appMarcaTexto corDeFundo="blue" corDoTexto="#000">{{nome}}</h1>
+<button class="btn btn-primary text-center" (click)="clicou(nome)">Clique</button>
+
+<div class="col-4 mx-auto mb-3">
+
+  <input type="text" class="form-control" placeholder="Digite algo" [(ngModel)]="text">
+  <h4 class="mt-3">Saída: {{text}}</h4>
+</div>
